@@ -1,0 +1,19 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Observation {
+  colorAfter  String?
+  colorBefore String?
+  createdAt   DateTime  @default(now())
+  id          String    @id @default(cuid())
+  objectId    String?
+  result      String?
+  timestamp   DateTime?
+  updatedAt   DateTime  @updatedAt
+}
